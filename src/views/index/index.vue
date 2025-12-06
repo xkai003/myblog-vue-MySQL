@@ -287,6 +287,7 @@ body {
   height: 360px;
   border-radius: var(--radius-lg);
   margin-top: 20px;
+  z-index: -1;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -304,7 +305,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)); */
   z-index: 1;
 }
 
@@ -471,7 +472,7 @@ body {
   line-height: 1.4;
   color: var(--text-main);
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
