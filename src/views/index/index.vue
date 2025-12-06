@@ -24,7 +24,7 @@
         <div class="banner-content">
           <h1>小凯的博客</h1>
           <p class="subtitle">记录生活，分享技术，探索世界</p>
-          <!-- <p class="date">2025年12月6日</p> -->
+          <p class="date">2025年12月6日</p>
         </div>
         <div class="banner-overlay"></div>
       </div>
@@ -130,7 +130,6 @@ export default {
       workslist: [],
       noteslist: [],
       travellist: [],
-      //travelList: [],  // change initial data
     }
   },
   methods: {
@@ -158,14 +157,6 @@ export default {
         this.workslist = processData(res.data.works);
         this.noteslist = processData(res.data.notes);
         this.travellist = processData(res.data.travel);
-        // set up data from backend
-        /* this.travellist = res.data.travel.map(item => ({
-          id: item.id,          // Assuming the item has an 'id'
-          name: item.location || "Unknown location", // show location as name
-          city: item.city || "Unknown city",       // show city
-          description: item.description || "No info",// station information
-          imageUrl: item.imageUrl || "default-image-url.jpg" // image url, default image
-        })); */
       }
     } catch (error) {
       console.error("请求失败:", error);
@@ -192,28 +183,24 @@ export default {
   --font-headers: 'Montserrat', sans-serif; /* Header font */
 }
 
-/* General styles */
-body {
-  font-family: var(--font-main);
-  color: var(--text-main);
-}
-
-.body {
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--bg-color);
-  background-image: radial-gradient(#e1e1e1 1px, transparent 1px);
-  background-size: 20px 20px;
-  color: var(--text-main);
+.body{
+    background-color: rgba(250, 246, 246, 0.8);
+    /* 方格背景 */
+    background: linear-gradient(90deg, rgba(200, 200, 200, 0.1) 3%, transparent 0),
+    linear-gradient(rgba(200, 200, 200, 0.1) 3%, transparent 0);
+    background-size: 20px 20px;
 }
 
 /* --- 导航栏 --- */
 .nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   width: 100%;
   background: rgba(255, 255, 255, 0.9);
-  /* backdrop-filter: blur(15px); */
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  /* box-shadow: var(--shadow-sm); */
+  box-shadow: var(--shadow-sm);
 }
 
 .nav {
@@ -279,6 +266,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px 20px 60px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 /* --- Banner --- */
@@ -287,7 +276,6 @@ body {
   height: 360px;
   border-radius: var(--radius-lg);
   margin-top: 20px;
-  z-index: -1;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -305,7 +293,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)); */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
   z-index: 1;
 }
 
@@ -389,14 +377,17 @@ body {
   gap: 25px;
   padding: 10px 5px 30px 5px;
   scrollbar-width: none;
-  /* border: 1px solid red; */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
 }
 
 /* --- 卡片通用样式 --- */
 .card-link {
   text-decoration: none;
   color: inherit;
-  flex: 0 0 300px;
+  flex: 0 0 320px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border: 1px solid rgb(197, 196, 196);
     background-color: #fff;
@@ -424,7 +415,7 @@ body {
   width: 100%;
   height: 200px;     /* Adjust the image size */
   overflow: hidden;
-  /* position: relative; */
+  position: relative;
 }
 
 .card-img img {
@@ -472,7 +463,7 @@ body {
   line-height: 1.4;
   color: var(--text-main);
   display: -webkit-box;
-  /* -webkit-line-clamp: 2; */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -507,10 +498,7 @@ body {
 
 /* --- 笔记卡片特殊样式 --- */
 .note-card {
-    border: 1px solid rgb(197, 196, 196);
-    background-color: #fff;
-    box-shadow:1px 20px 20px -2px rgb(197, 196, 196);
-  /* background: linear-gradient(145deg, #ffffff, #f0f0f0); */
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
   min-height: 200px;
 }
 
@@ -532,10 +520,7 @@ body {
 }
 
 .travel-card {
-    border: 1px solid rgb(197, 196, 196);
-    background-color: #fff;
-    box-shadow:1px 20px 20px -2px rgb(197, 196, 196);
-  /* position: relative; */
+  position: relative;
   height: 350px; /* reduced height slightly*/
   display: flex;
   flex-direction: column;
@@ -609,7 +594,7 @@ body {
   }
 
   .card-link {
-    flex: 0 0 100%;
+    flex: 0 0 85%;
   }
 
   .scroll-container {
@@ -618,6 +603,4 @@ body {
   }
 }
 
-/* Font imports */
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Nunito+Sans:wght@400;700&display=swap'); */
 </style>
